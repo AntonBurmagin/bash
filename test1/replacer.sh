@@ -28,16 +28,11 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-i=0
 for file in "${FILES[@]}"; do
 	filedir=$(dirname $file)
 	filename=$(basename $file)
 	if [[ $file == *$EXTENSION ]]; then
-		new_filename="${filename%$EXTENSION}$REPLACEMENT"
+		new_filename="${filename%.$EXTENSION}.$REPLACEMENT"
 		mv "${filedir}/$filename" "${filedir}/${new_filename}" 
 	fi
 done
-
-
-echo $EXTENSION
-echo $REPLACEMENT
